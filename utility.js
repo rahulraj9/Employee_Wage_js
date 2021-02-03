@@ -32,7 +32,20 @@ class empWage{
                 console.log("Employee is Absent");
         }
         empWage = empHrs * FIXEDWAGEPERHRS;
-       console.log("Total Wage:- "+empWage);
+        console.log(`Daily Wage:- ${empWage}`);
+        return empWage;
+    }
+    calculateWageForMonth()
+    {
+        const WORKINGDAYS = 20;
+        let monthlyWage = 0;
+        for(let days = 1; days <= WORKINGDAYS; days++)
+        {
+            this.CalculateWage();
+            monthlyWage = monthlyWage + this.CalculateWage();
+        }
+        console.log(`Total Monthly wage for 20 Working Days:- ${monthlyWage}`);
+
     }
 }
 module.exports = new empWage();
