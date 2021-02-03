@@ -6,7 +6,6 @@ class empWage{
         let empCheckAttendence = Math.floor(Math.random() * 10)%3;
         return empCheckAttendence; 
     }
-
     CalculateWage()
     {
         const ISPARTTIME = 1;
@@ -80,5 +79,37 @@ class empWage{
             
             console.log("Employee TotalWage:\t"+totalWage+"\tEmployee Total Working Hrs:\t"+totalEmpWorkingHrs);
         }
+    WageForMonthAndStoreInArray()
+    {
+        
+        const IS_PART_TIME = 1;
+        const IS_FULL_TIME = 2;
+        const EMP_RATE_PER_HRS = 20;
+        const MAX_EMP_WORKING_DAYS_IN_MONTH = 20;
+        const EMP_MAX_WORKING_HRS_IN_MONTH = 80;
+        let dailyWage =0;
+        let wageArry = new Array();
+        let empWage =0, empWorkingHrs =0, totalEmpWorkingHrs = 0, totalWage = 0, totalWorkingDays = 0;
+    
+            while(totalEmpWorkingHrs <=  EMP_MAX_WORKING_HRS_IN_MONTH && totalWorkingDays < MAX_EMP_WORKING_DAYS_IN_MONTH) {
+                
+                totalWorkingDays++;
+                let EmpPresent = Math.floor(Math.random() * 10) % 3;
+                
+                switch(EmpPresent){
+                    case IS_PART_TIME:
+                        empWorkingHrs = 4;
+                        break;
+                    case IS_FULL_TIME:
+                        empWorkingHrs = 8;
+                        break;
+                    default:
+                        empWorkingHrs = 0;
+                }
+            dailyWage = MAX_EMP_WORKING_DAYS_IN_MONTH * empWorkingHrs ;
+            wageArry.push(dailyWage);
+            }
+            wageArry.forEach(element => {console.log(element)});
+        }           
 }
 module.exports = new empWage();
