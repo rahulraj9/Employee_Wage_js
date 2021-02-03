@@ -3,11 +3,8 @@ class empWage{
     attendenceCheck()
     {
         let isPresent = 1;
-        let empCheckAttendence = Math.floor(Math.random() * 10)%2;
-        if(empCheckAttendence == isPresent)
-            console.log("Employee is Present");
-        else
-            console.log("Employee is Absent");
+        let empCheckAttendence = Math.floor(Math.random() * 10)%3;
+        return empCheckAttendence; 
     }
 
     CalculateWage()
@@ -16,9 +13,8 @@ class empWage{
         const ISFULLTIME = 2;
         const FIXEDWAGEPERHRS = 20;
         let empHrs = 0;
-        let empWage = 0;
-        let employementType= parseInt(Math.floor(Math.random() * 10) % 3);        
-        switch(employementType)
+        let empWage = 0;      
+        switch(this.attendenceCheck())
         {
             case ISFULLTIME:
                 empHrs = 8;
@@ -41,6 +37,7 @@ class empWage{
         let monthlyWage = 0;
         for(let days = 1; days <= WORKINGDAYS; days++)
         {
+            
             this.CalculateWage();
             monthlyWage = monthlyWage + this.CalculateWage();
         }
