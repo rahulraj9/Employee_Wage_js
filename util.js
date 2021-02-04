@@ -59,8 +59,29 @@ class EmployeeWAge {
             sum = empWageArray.reduce(function(a, b){return a + b;}, 0);
         }
         console.log(`Total Wage For a Month is ${sum}`);
+        return this.totalWorkingDays;
+    }
+    dayAlongwithDailyWage()
+    {
+        var empWageArray = new Array();
+        var daysArray = new Array();
+        var map = new Map();
 
-
+        while (this.totalEmpWorkingHrs <= this.MAXHRSINMONTH && this.totalWorkingDays < this.NUMBEROFWORKINGDAYS) {
+            this.totalWorkingDays++;
+            this.empAttendenceCheck();
+            this.empHr = this.empWOrkingHrs();
+            this.totalEmpWorkingHrs += this.empHr;
+            empWageArray.push(this.empDailyWage());
+            daysArray.push(this.totalWorkingDays);
+       }
+       for(var i =0; i<daysArray.length;i++)
+       {
+          map.set(daysArray[i],empWageArray[i]);
+       }
+       for (let [day,Wage] of map.entries()) {
+        console.log(day + ' = ' + Wage );
+    }
     }
 
 

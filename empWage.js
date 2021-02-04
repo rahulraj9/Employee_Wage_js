@@ -1,3 +1,3 @@
 let check = require('./util');
 
-check.empMonthlyWageUsingArrayHelper();
+check.dayAlongwithDailyWage();
