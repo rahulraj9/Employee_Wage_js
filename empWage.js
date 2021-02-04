@@ -1,5 +1,3 @@
-let WageArray = require('./utility');
+let check = require('./util');
 
-WageArray.storeDailyWageAndDay();
-
-
+check.empMonthlyWageUsingArrayHelper();
