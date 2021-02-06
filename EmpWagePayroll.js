@@ -1,61 +1,58 @@
 class EmpWagePayRoll {
 
-
-    constructor(empId, name, salary, gender, startDate) {
-        this.empId = empId;
-        this.name = name;
-        this.salary = salary;
-        this.gender = gender;
-        this.startDate = startDate;
+    get Id() {
+        return this._empId;
     }
-
-    uu = {
-        get Id() {
-            return this._empId;
-        },
-        set Id(empId) {
-            this._empId = empId;
-        },
-        get name() {
-            return this._name;
-        },
-        set name(name) {
-            this._name = name;
-        },
-        set salary(salary) {
-            this._salary = salary;
-        },
-        get salary() {
-            return this._salary;
-        },
-        get gender() {
-            return this._gender;
-        },
-        set gender(gender) {
-            this._gender = gender;
-        },
-        get startDate() {
-            return this.startDate;
-        },
-        set startDate(startDate) {
-            this._startDate = this.startDate;
+    set Id(empId) {
+        this._empId = empId;
+    }
+    get name() {
+        return this._name;
+    }
+    set name(name) {
+        try {
+            var pattern = new RegExp("^[A-Z][a-zA-Z]{2,}");
+            if (pattern.test(name)) {
+                this._name = name;
+            } else {
+                throw ("Name format is incorrect");
+            }
+        } catch (error) {
+            console.error(error);
         }
-
-
     }
+    set salary(salary) {
+        this._salary = salary;
+    }
+    get salary() {
+        return this._salary;
+    }
+    get gender() {
+        return this._gender;
+    }
+    set gender(gender) {
+        this._gender = gender;
+    }
+    get startDate() {
+        return this._startDate;
+    }
+    set startDate(startDate) {
+        this._startDate = startDate;
+    }
+
     toString() {
-        return `id: ${this.empId}\nName : ${this.name}\nSalary: ${this.salary}\nGender: ${this.gender}\nStartDate: ${this.startDate}`;
+        return `id: ${this.empId}\nName : ${this._name}\nSalary: ${this.salary}\nGender: ${this.gender}\nStartDate: ${this.startDate}`;
     }
 }
 
-let EmpWagePay = new EmpWagePayRoll(1, "Rahul", 30000, "Male", "26jan");
-console.log(EmpWagePay.toString());
+let EmpWagePay = new EmpWagePayRoll();
+//console.log(EmpWagePay.toString());
 
 EmpWagePay.empId = 21;
-EmpWagePay.name = "YOYO"
 EmpWagePay.salary = 40000
-EmpWagePay.gender = "Female"
-EmpWagePay.startDate = "26jan"
+EmpWagePay.gender = "male"
+EmpWagePay.startDate = "26jan";
+EmpWagePay.name = "Rahul"
 console.log("\n\n")
 console.log(EmpWagePay.toString());
 
